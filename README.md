@@ -1,2 +1,2 @@
 # Hopper
-My own operating system build from scratch.
+My own operating system built from scratch.
