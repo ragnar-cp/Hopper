@@ -39,13 +39,14 @@ Hopper is my personal journey into low-level systems programming, kernel develop
 ## Project Structure
 
 ```bash
-Hopper/
-├── boot/                  # Bootloader code
-│   └── boot.nasm
-├── kernel/                # Kernel source
-│   ├── kernel_entry.asm
-│   └── kernel.c
-├── linker.ld              # Linker script
-├── Makefile               # Build automation
-├── iso/                   # For creating bootable ISO (future)
-└── README.md
+HopperOS/
+├── Makefile                     # Automatically handles compiling, linking, and running
+└── src/
+    ├── boot/
+    │   ├── boot.asm             # 16-bit bootloader (loads kernel & enters PM)
+    │   └── gdt.asm              # GDT descriptor and segmentation setup
+    └── kernel/
+        ├── kernel_entry.asm     # Assembly entrypoint linking to C main
+        ├── kernel.c             # The C kernel main logic (clears VGA screen & prints)
+        └── linker.ld            # Linker script mapping sections to 0x1000 address
+
