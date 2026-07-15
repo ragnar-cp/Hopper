@@ -1,17 +1,51 @@
-# Hopper
-My own operating system built from scratch.
-Day 1:
-      Installed wsl ubuntu, installed GCC, NASM,QEMU 
-      Wrote a boot.nsm file which displayed the name of the os "Hopper" translated it using nasm , used QEMU to run the boot.bin.
-      Got the output succesfully:- 
-      <img width="845" height="350" alt="image" src="https://github.com/user-attachments/assets/e5baa939-c6cb-456e-88c1-99fbfad11535" />
-      /
-      /
-      #kernal
-       * I have created a kernal_entry.asm which points towards the kernal's main class {kernal_entry acts as a gatekeepr showing the direction // location of the kernal placed in the memory}
-       * I have created kernal.c it defines kernal_main()
-           1.Accesses the VGA text buffer directly at physical address 0xB8000
-           2. Clearr the  screen
-           3. Prints the message "Hopper kernal is running in 32-bit protected Mode!".
-      # Liner
-        Since im using a cross - complier i need a linker Script (linker.ld) this tells the compiler exactly where in the physical memory to  place my code so the cpu can find it.
+# Hopper OS
+
+**A hobby operating system built from scratch** — currently in early development.
+
+Hopper is my personal journey into low-level systems programming, kernel development, and understanding how operating systems work under the hood.
+
+![Hopper Boot Screen](https://github.com/user-attachments/assets/e5baa939-c6cb-456e-88c1-99fbfad11535)
+
+---
+
+## Current Status
+
+**Day 1** — Basic Bootloader + 32-bit Protected Mode Kernel
+
+- Boot sector successfully loads and displays "Hopper"
+- Transitioned into 32-bit protected mode
+- Basic kernel running with direct VGA text output
+
+---
+
+## Features Implemented
+
+- **Bootloader** (NASM)
+  - Prints OS name on boot
+  - Loads kernel
+
+- **Kernel** (C + Assembly)
+  - Kernel entry point (`kernel_entry.asm`)
+  - `kernel_main()` in C
+  - Direct VGA text buffer access (`0xB8000`)
+  - Screen clearing and text printing
+
+- **Build System**
+  - Cross-compilation setup
+  - Linker script for memory layout
+
+---
+
+## Project Structure
+
+```bash
+Hopper/
+├── boot/                  # Bootloader code
+│   └── boot.nasm
+├── kernel/                # Kernel source
+│   ├── kernel_entry.asm
+│   └── kernel.c
+├── linker.ld              # Linker script
+├── Makefile               # Build automation
+├── iso/                   # For creating bootable ISO (future)
+└── README.md
